@@ -43,7 +43,7 @@ public class ChamadoService {
 		return chamadoRepository.save(newChamado(objDTO));
 	}
 
-	public Chamado update(@Valid Integer id, ChamadoDTO objDTO) {
+	public Chamado update( Integer id,@Valid ChamadoDTO objDTO) {
 		objDTO.setId(id);
 		Chamado oldObj = findById(id);
 		oldObj = newChamado(objDTO);

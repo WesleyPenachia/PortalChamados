@@ -17,7 +17,7 @@ import com.me.portalchamados.repositories.ClienteRepository;
 import com.me.portalchamados.repositories.TecnicoRepository;
 
 @Service
-public class DBServives {
+public class DBServices {
 
 	@Autowired
 	private ClienteRepository clienteRepository;
@@ -31,7 +31,7 @@ public class DBServives {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 	
-	public void instaciaDB() {
+	public void instanciaDB() {
 		Tecnico tec1 = new Tecnico(null, "wesley", "37214811863", "wesleyikiko@hotmail.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
 		

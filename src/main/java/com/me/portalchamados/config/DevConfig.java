@@ -6,14 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.me.portalchamados.service.DBServives;
+import com.me.portalchamados.service.DBServices;
 
 @Configuration
 @Profile("dev")
 public class DevConfig {
 	
 	@Autowired
-	private DBServives dbService;
+	private DBServices dbService;
 	
 	@Value("${spring.jpa.hibernate.ddl-auto}")
 	private String value;
@@ -21,7 +21,7 @@ public class DevConfig {
 	@Bean
 	public boolean instanciaDB() {
 		if(value.equals("create")) {
-			this.dbService.instaciaDB();			
+			this.dbService.instanciaDB();			
 		}
 		return false;
 	}

@@ -5,17 +5,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.me.portalchamados.service.DBServives;
+import com.me.portalchamados.service.DBServices;
 
 @Configuration
 @Profile("test")
 public class TestConfig {
 	
 	@Autowired
-	private DBServives dbService;
+	private DBServices dbService;
 	
 	@Bean
 	public void instanciaDB() {
-		this.dbService.instaciaDB();
+		this.dbService.instanciaDB();
 	}
 }
