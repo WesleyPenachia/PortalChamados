@@ -21,7 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.me.portalchamados.domain.Tecnico;
 import com.me.portalchamados.domain.dtos.TecnicoDTO;
-import com.me.portalchamados.service.TecnicoService;
+import com.me.portalchamados.services.TecnicoService;
 
 @RestController
 @RequestMapping(value="/tecnicos")
@@ -32,7 +32,7 @@ public class TecnicoResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<TecnicoDTO> findById(@PathVariable Integer id) {
-		Tecnico obj = this.tecnicoService.findById(id);
+		Tecnico obj = tecnicoService.findById(id);
 		return ResponseEntity.ok().body(new TecnicoDTO(obj));
 	}
 	

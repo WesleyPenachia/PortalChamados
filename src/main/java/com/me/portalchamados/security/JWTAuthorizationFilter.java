@@ -17,13 +17,13 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 
 	private JWTUtil jwtUtil;
-	private UserDetailsService userDetailService;
+	private UserDetailsService userDetailsService;
 	
 	public JWTAuthorizationFilter(AuthenticationManager authenticationManager,JWTUtil jwtUtil,UserDetailsService userDetailService) {
 		super(authenticationManager);
 		
 		this.jwtUtil = jwtUtil;
-		this.userDetailService = userDetailService;
+		this.userDetailsService = userDetailService;
 	}
 	
 	@Override
@@ -45,7 +45,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 		
 		if(jwtUtil.tokenValido(token)) {
 			String username = jwtUtil.getUsername(token);
-			UserDetails details = userDetailService.loadUserByUsername(username);
+			UserDetails details = userDetailsService.loadUserByUsername(username);
 			return new UsernamePasswordAuthenticationToken(details.getUsername(), null,details.getAuthorities());
 		}
 		return null;

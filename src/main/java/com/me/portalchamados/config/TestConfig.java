@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import com.me.portalchamados.service.DBServices;
+import com.me.portalchamados.services.DBServices;
 
 @Configuration
 @Profile("test")

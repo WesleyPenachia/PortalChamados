@@ -1,4 +1,4 @@
-package com.me.portalchamados.service;
+package com.me.portalchamados.services;
 
 import java.util.Optional;
 

@@ -19,7 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.me.portalchamados.domain.Chamado;
 import com.me.portalchamados.domain.dtos.ChamadoDTO;
-import com.me.portalchamados.service.ChamadoService;
+import com.me.portalchamados.services.ChamadoService;
 
 @RestController
 @RequestMapping(value="/chamados")
@@ -45,12 +45,12 @@ public class ChamadoResource {
 	@PostMapping
 	public ResponseEntity<ChamadoDTO> create(@Valid @RequestBody ChamadoDTO objDTO) {
 		Chamado obj = chamadoService.create(objDTO);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(obj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ChamadoDTO> update(@Valid @PathVariable Integer id, @RequestBody ChamadoDTO objDTO){
+	public ResponseEntity<ChamadoDTO> update(@PathVariable Integer id,@Valid  @RequestBody ChamadoDTO objDTO){
 		Chamado newObj = chamadoService.update(id, objDTO);
 		return ResponseEntity.ok().body(new ChamadoDTO(newObj));
 	}

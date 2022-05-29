@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.me.portalchamados.domain.Cliente;
 import com.me.portalchamados.domain.dtos.ClienteDTO;
-import com.me.portalchamados.service.ClienteService;
+import com.me.portalchamados.services.ClienteService;
 
 @RestController
 @RequestMapping(value="/clientes")
@@ -31,7 +31,7 @@ public class ClienteResource {
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClienteDTO> findById(@PathVariable Integer id) {
-		Cliente obj = this.clienteService.findById(id);
+		Cliente obj = clienteService.findById(id);
 		return ResponseEntity.ok().body(new ClienteDTO(obj));
 	}
 	

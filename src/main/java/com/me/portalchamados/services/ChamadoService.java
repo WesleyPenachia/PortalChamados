@@ -1,4 +1,4 @@
-package com.me.portalchamados.service;
+package com.me.portalchamados.services;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -39,11 +39,11 @@ public class ChamadoService {
 		return chamadoRepository.findAll();
 	}
 
-	public Chamado create(@Valid ChamadoDTO objDTO) {
+	public Chamado create(ChamadoDTO objDTO) {
 		return chamadoRepository.save(newChamado(objDTO));
 	}
 
-	public Chamado update( Integer id,@Valid ChamadoDTO objDTO) {
+	public Chamado update( Integer id, @Valid ChamadoDTO objDTO) {
 		objDTO.setId(id);
 		Chamado oldObj = findById(id);
 		oldObj = newChamado(objDTO);
