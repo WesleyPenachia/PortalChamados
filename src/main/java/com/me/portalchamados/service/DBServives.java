@@ -3,6 +3,7 @@ package com.me.portalchamados.service;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.me.portalchamados.domain.Chamado;
@@ -27,11 +28,14 @@ public class DBServives {
 	@Autowired
 	private ChamadoRepository chamadoRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+	
 	public void instaciaDB() {
-		Tecnico tec1 = new Tecnico(null, "wesley", "37214811863", "wesleyikiko@hotmail.com", "123");
+		Tecnico tec1 = new Tecnico(null, "wesley", "37214811863", "wesleyikiko@hotmail.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
 		
-		Cliente cli1 = new Cliente(null, "Linos test", "97896243440", "linos@hotmail.com", "123");
+		Cliente cli1 = new Cliente(null, "Linos test", "97896243440", "linos@hotmail.com", encoder.encode("123"));
 		
 		Chamado c1 = new Chamado(null, Prioridade.MEDIA, Status.ANDAMENTO, "chamado 01", "Primeiro chamado", tec1, cli1);
 	
