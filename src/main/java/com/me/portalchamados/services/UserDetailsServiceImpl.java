@@ -13,7 +13,7 @@ import com.me.portalchamados.repositories.PessoaRepository;
 import com.me.portalchamados.security.UserSS;
 
 @Service
-public class UserDetailServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
 	private PessoaRepository pessoaRepository;
